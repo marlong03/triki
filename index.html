@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./sweetAlert/sweetalert2.min.css">
+    <link rel="stylesheet" href="index.css">
+    <title>TRIKI</title>
+    
+</head>
+
+<body>
+    <header class="header">
+        <h1>TRIKI</h1>
+    </header>
+    <main>
+        <section class="container__sections">
+            <div class="container__user ocultarEnResponse">
+                
+                <h2>Player X</h2>
+                <div>
+                    <p> Ganadas: <span id="puntajeXId"></span> </p>
+                </div>
+            </div>
+        <section class="container__triki" id="containerCuadrados">
+            <div class="container__cuadrados">
+                <div class="cuadrado" id="cuadrado1"></div>
+                <div class="cuadrado" id="cuadrado2"></div>
+                <div class="cuadrado" id="cuadrado3"></div>
+            </div>
+            <div class="container__cuadrados">
+                <div class="cuadrado" id="cuadrado4"></div>
+                <div class="cuadrado" id="cuadrado5"></div>
+                <div class="cuadrado" id="cuadrado6"></div>
+            </div>
+            <div class="container__cuadrados">
+                <div class="cuadrado" id="cuadrado7"></div>
+                <div class="cuadrado" id="cuadrado8"></div>
+                <div class="cuadrado" id="cuadrado9"></div>
+            </div> 
+            <div class="container__info_partida">
+                <div>
+                    <h3>Juega:
+                         <span id="juega">X</span>
+                    </h3>
+                </div>
+                <div>
+                    <input type="button" value="🔃" id="btnReset">
+                </div> 
+        </section>
+        
+        <div class="container__user ocultarEnResponse">
+            <h2>Player O</h2>
+            <div>
+                <p> Ganadas: <span id="puntajeOId"></span> </p>
+            </div>
+        </div>
+    </section>
+    <section class="container__user--responsive">
+          <div class="container__user">
+            <h2>Player X</h2>
+            <div>
+                <p> Ganadas: <span id="puntajeXIdR"></span> </p>
+            </div>
+        </div>
+          <div class="container__user">
+            <h2>Player O</h2>
+            <div>
+                <p> Ganadas: <span id="puntajeOIdR"></span> </p>
+            </div>
+        </div>
+    </section>
+
+    </main>
+    <footer>
+
+    </footer>
+    <script src="sweetAlert/sweetalert2.all.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

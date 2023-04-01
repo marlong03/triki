@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quantico&family=Rubik+Iso&display=swap');
+/* 
+font-family: 'Press Start 2P', cursive;
+font-family: 'Rubik Iso', cursive;
+font-family: 'Quantico', sans-serif;
+*/
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    background-color: #004a45;
+}
+.swal2-title {
+    font-family: 'Quantico', sans-serif;
+    color:#004a45;
+   
+  }
+  
+  .swal2-html-container{
+    font-family: 'Quantico', sans-serif;
+   
+  }
+.header{
+    display: flex;
+    justify-content: center;
+    font-family: 'Rubik Iso', cursive;
+    letter-spacing: 7px;
+    font-size: 25px;
+    color: white;
+    text-shadow: 5px 5px 5px #002422;
+    padding:20px 0 30px;
+}
+.container__sections{
+    display: flex;
+    justify-content: space-between;
+    padding:0 60px;
+}
+.container__triki{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 250px;
+    margin: 0 auto;
+
+}
+.container__info_partida{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+.container__info_partida input{
+    cursor: pointer;
+
+}
+.container__triki h3{
+    font-size: 18px;
+    font-family: 'Quantico', sans-serif;
+    color:#00625c ;
+    margin-right: 30px;
+    padding:8px 17px;
+    border-radius: 20px;
+    background-color: white;
+}
+.container__cuadrados{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.cuadrado{
+    background-color: 
+    #00625c;
+    border-bottom: 5px solid #022e2b;
+    border-radius: 10px;
+    margin:6px;
+    width:70px;
+    height:70px;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px #003b37;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Rubik Iso', cursive;
+    font-weight: 900;
+    font-size: 50px;
+    color:white;
+}
+.cuadrado:hover{
+    background-color: #006962;
+}
+.ocultarEnResponse{
+    display: block;
+}
+
+.container__user--responsive{
+    display:none;
+
+}
+@media (max-width:650px) {
+    .ocultarEnResponse{
+        display: none;
+    }
+   
+    .header{
+        letter-spacing: 5px !important;
+        font-size: 22px !important;
+        padding:15px 0 15px !important;
+    }
+    .container__info_partida{
+        margin-top: 5px !important;
+    }
+    .container__triki h3{
+        font-size: 16px !important;
+        margin-right: 65px !important;
+        padding:4px 15px !important;
+    }
+    .container__sections{
+        padding: 0 !important;;
+    }
+    .container__user--responsive{
+        border-top: 4px solid white;
+        border-radius: 200px 200px 0px 0px / 40% 40% 0% 0%;
+        display: flex;
+        justify-content: space-around;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #033330;
+    }
+    .cuadrado{
+        border-bottom: 3px solid #022e2b !important;
+        margin:4px !important;
+        width:70px !important;
+        height:70px !important;
+        font-size: 45px !important;
+    }
+    .container__user{
+        padding-top: 15px !important;
+        margin-bottom: 10px !important;
+    }
+    .container__user h2{
+        font-size: 18px !important;
+        border-bottom: 3px solid #99ff00 !important;
+        padding:2px 10px !important;
+        margin-bottom: 0px !important;
+    }
+    .container__user p{
+        font-size: 16px !important;
+    }
+}
+.container__user{
+    padding-top: 10px;
+    font-family: 'Quantico', sans-serif;
+    color: white;
+}
+.container__user h2{
+    font-size: 25px;
+    border-bottom: 4px solid #99ff00;
+    padding:6px 10px;
+    margin-bottom: 20px;
+}
+.container__user p{
+    font-size: 18px;
+    text-align: center;
+}
+#btnReset{
+    text-align: center;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;    
+    transform: rotate(90deg);
+    font-size: 35px;
+    background-color: transparent;
+    border:none;
+
+   
+}
