@@ -29,13 +29,7 @@ btnReset.addEventListener("click",(x)=>{
         denyButtonText: 'Cancelar',
     }).then((result) => {
         if(result.isConfirmed) {
-            resetCuadrados()
-            puntajeX = 0
-            puntajeO = 0
-            puntajeXId.innerText = puntajeX
-            puntajeOId.innerText = puntajeO
-            puntajeXIdR.innerText = puntajeX
-            puntajeOIdR.innerText = puntajeO
+            window.location.reload()
         } else if(result.isDenied) {
             return
         }
@@ -102,7 +96,7 @@ function resetCuadrados(){
     cuadrado8.innerText = ""
     cuadrado9.innerText = ""
     cantidadCuadrosRellenos = 0
-   
+    ganadorPartida = ""
 }
 //--------------------------------------
 var cCuadrados = document.getElementById("containerCuadrados")
@@ -136,15 +130,18 @@ cCuadrados.addEventListener("click",function(x){
              
             }
              if(computerPlay == true){
-                console.log(computerPlay , cantidadCuadrosRellenos);
+               
 
+              
                 let sonido1 = new Audio()
                 sonido1.src = 'audios/tictic.mp3'
                 sonido1.play()
-                jugarComputer(objComparador, juegaText,x)
-                juegaText.innerText = juega
-                cantidadCuadrosRellenos += 1
-                juega = "X"
+
+                    jugarComputer(objComparador, juegaText,x)
+                    juegaText.innerText = juega
+                    cantidadCuadrosRellenos += 1
+                    juega = "X"
+                
             }
         }
           
@@ -166,6 +163,7 @@ cCuadrados.addEventListener("click",function(x){
             }
         }
     }else if(computerPlay == true){
+        
         if(juega == "X"){
             let sonido1 = new Audio()
             sonido1.src = 'audios/tic.mp3'
@@ -194,11 +192,12 @@ cCuadrados.addEventListener("click",function(x){
             }
         }
         if(juega == "O"){
+            console.log(objComparador);
             if(computerPlay == false){
                 let sonido1 = new Audio()
                 sonido1.src = 'audios/tictic.mp3'
                 sonido1.play()
-                console.log(computerPlay , cantidadCuadrosRellenos);
+               
                 x.target.innerText = "O"
                 juegaText.innerText = juega
                 cantidadCuadrosRellenos += 1
@@ -206,7 +205,7 @@ cCuadrados.addEventListener("click",function(x){
              
             }
              if(computerPlay == true){
-                console.log(computerPlay , cantidadCuadrosRellenos);
+                
                 let sonido1 = new Audio()
                 sonido1.src = 'audios/tictic.mp3'
                 sonido1.play()
@@ -214,10 +213,11 @@ cCuadrados.addEventListener("click",function(x){
                 juegaText.innerText = juega
                 cantidadCuadrosRellenos += 1
                 juega = "X"
+                console.log(cantidadCuadrosRellenos);
             }
         }
           
-        objComparador = {
+        /* objComparador = {
             fila1:{
                 cuadrado1:cuadrado1.innerText,
                 cuadrado2:cuadrado2.innerText,
@@ -233,10 +233,10 @@ cCuadrados.addEventListener("click",function(x){
                 cuadrado8:cuadrado8.innerText,
                 cuadrado9:cuadrado9.innerText,
             }
-        }
+        } */ //sOBRE ESCRIBIA EL OBJ COMPARADOR Y NO SE VEIA EL ULTIMO MOVIMIENTO
     }
        
-        console.log(objComparador);
+       
        
         if(computerPlay == false){
             comparar(objComparador) 
@@ -258,114 +258,120 @@ const puntajeXIdR = document.getElementById("puntajeXIdR")
 const puntajeOIdR = document.getElementById("puntajeOIdR")
 let puntajeX = 0
 let puntajeO = 0
-
+let ganadorPartida = ""
 function comparar(obj){
     console.log( cantidadCuadrosRellenos);
    
 //X EN FILAS
-if( obj.fila1.cuadrado1 == "X" &&
-    obj.fila1.cuadrado2 == "X" &&
-    obj.fila1.cuadrado3 == "X"  )
-{ganaPartida("X")}
-else if( obj.fila2.cuadrado4 == "X" &&
-    obj.fila2.cuadrado5 == "X" &&
-    obj.fila2.cuadrado6 == "X"  )
-{ganaPartida("X")}
-else if( obj.fila3.cuadrado7 == "X" &&
-    obj.fila3.cuadrado8 == "X" &&
-    obj.fila3.cuadrado9 == "X"  )
-{ganaPartida("X")}
-//X EN filaS
-if( obj.fila1.cuadrado1 == "X" &&
-    obj.fila2.cuadrado4 == "X" &&
-    obj.fila3.cuadrado7 == "X"  )
-{ganaPartida("X")}
-else if( obj.fila1.cuadrado2 == "X" &&
-    obj.fila2.cuadrado5 == "X" &&
-    obj.fila3.cuadrado8 == "X"  )
-{ganaPartida("X")}
-else if( obj.fila1.cuadrado3 == "X" &&
-    obj.fila2.cuadrado6 == "X" &&
-    obj.fila3.cuadrado9 == "X"  )
+if(cantidadCuadrosRellenos <= 10){
+
+    if( obj.fila1.cuadrado1 == "X" &&
+        obj.fila1.cuadrado2 == "X" &&
+        obj.fila1.cuadrado3 == "X"  )
     {ganaPartida("X")}
-//X EN DIAGONALES
-if( obj.fila1.cuadrado1 == "X" &&
-    obj.fila2.cuadrado5 == "X" &&
-    obj.fila3.cuadrado9 == "X"  )
+    else if( obj.fila2.cuadrado4 == "X" &&
+        obj.fila2.cuadrado5 == "X" &&
+        obj.fila2.cuadrado6 == "X"  )
     {ganaPartida("X")}
-else if( obj.fila1.cuadrado3 == "X" &&
-    obj.fila2.cuadrado5 == "X" &&
-    obj.fila3.cuadrado7 == "X"  )
+    else if( obj.fila3.cuadrado7 == "X" &&
+        obj.fila3.cuadrado8 == "X" &&
+        obj.fila3.cuadrado9 == "X"  )
     {ganaPartida("X")}
+    //X EN filaS
+    if( obj.fila1.cuadrado1 == "X" &&
+        obj.fila2.cuadrado4 == "X" &&
+        obj.fila3.cuadrado7 == "X"  )
+    {ganaPartida("X")}
+    else if( obj.fila1.cuadrado2 == "X" &&
+        obj.fila2.cuadrado5 == "X" &&
+        obj.fila3.cuadrado8 == "X"  )
+    {ganaPartida("X")}
+    else if( obj.fila1.cuadrado3 == "X" &&
+        obj.fila2.cuadrado6 == "X" &&
+        obj.fila3.cuadrado9 == "X"  )
+        {ganaPartida("X")}
+    //X EN DIAGONALES
+    if( obj.fila1.cuadrado1 == "X" &&
+        obj.fila2.cuadrado5 == "X" &&
+        obj.fila3.cuadrado9 == "X"  )
+        {ganaPartida("X")}
+    else if( obj.fila1.cuadrado3 == "X" &&
+        obj.fila2.cuadrado5 == "X" &&
+        obj.fila3.cuadrado7 == "X"  )
+        {ganaPartida("X")}
+        
+        else{
 
-    else{
-
-//--------------------------------------
+    //--------------------------------------
 
 
-//O EN FILAS
-    if( obj.fila1.cuadrado1 == "O" &&
-        obj.fila1.cuadrado2 == "O" &&
-        obj.fila1.cuadrado3 == "O"  )
-        {ganaPartida("O")}
-    else if( obj.fila2.cuadrado4 == "O" &&
-        obj.fila2.cuadrado5 == "O" &&
-        obj.fila2.cuadrado6 == "O"  )
-        {ganaPartida("O")}
-    else if( obj.fila3.cuadrado7 == "O" &&
-        obj.fila3.cuadrado8 == "O" &&
-        obj.fila3.cuadrado9 == "O"  )
-        {ganaPartida("O")}
-    //O EN filaS
-    if( obj.fila1.cuadrado1 == "O" &&
-        obj.fila2.cuadrado4 == "O" &&
-        obj.fila3.cuadrado7 == "O"  )
-        {ganaPartida("O")}
-    else if( obj.fila1.cuadrado2 == "O" &&
-        obj.fila2.cuadrado5 == "O" &&
-        obj.fila3.cuadrado8 == "O"  )
-        {ganaPartida("O")}
-    else if( obj.fila1.cuadrado3 == "O" &&
-        obj.fila2.cuadrado6 == "O" &&
-        obj.fila3.cuadrado9 == "O"  )
-        {ganaPartida("O")}
-    //O EN DIAGONALES
-    if( obj.fila1.cuadrado1 == "O" &&
-        obj.fila2.cuadrado5 == "O" &&
-        obj.fila3.cuadrado9 == "O"  )
-        {ganaPartida("O")}
-    else if( obj.fila1.cuadrado3 == "O" &&
-        obj.fila2.cuadrado5 == "O" &&
-        obj.fila3.cuadrado7 == "O"  )
-        {ganaPartida("O")}
-    /* else{
-        if(cantidadCuadrosRellenos == 10){
+    //O EN FILAS
+        if( obj.fila1.cuadrado1 == "O" &&
+            obj.fila1.cuadrado2 == "O" &&
+            obj.fila1.cuadrado3 == "O"  )
+            {ganaPartida("O")}
+        else if( obj.fila2.cuadrado4 == "O" &&
+            obj.fila2.cuadrado5 == "O" &&
+            obj.fila2.cuadrado6 == "O"  )
+            {ganaPartida("O")}
+        else if( obj.fila3.cuadrado7 == "O" &&
+            obj.fila3.cuadrado8 == "O" &&
+            obj.fila3.cuadrado9 == "O"  )
+            {ganaPartida("O")}
+        //O EN filaS
+        if( obj.fila1.cuadrado1 == "O" &&
+            obj.fila2.cuadrado4 == "O" &&
+            obj.fila3.cuadrado7 == "O"  )
+            {ganaPartida("O")}
+        else if( obj.fila1.cuadrado2 == "O" &&
+            obj.fila2.cuadrado5 == "O" &&
+            obj.fila3.cuadrado8 == "O"  )
+            {ganaPartida("O")}
+        else if( obj.fila1.cuadrado3 == "O" &&
+            obj.fila2.cuadrado6 == "O" &&
+            obj.fila3.cuadrado9 == "O"  )
+            {ganaPartida("O")}
+        //O EN DIAGONALES
+        if( obj.fila1.cuadrado1 == "O" &&
+            obj.fila2.cuadrado5 == "O" &&
+            obj.fila3.cuadrado9 == "O"  )
+            {ganaPartida("O")}
+        else if( obj.fila1.cuadrado3 == "O" &&
+            obj.fila2.cuadrado5 == "O" &&
+            obj.fila3.cuadrado7 == "O"  )
+            {ganaPartida("O")}
+        /* else{
+            if(cantidadCuadrosRellenos == 10){
 
+                Swal.fire(
+                    'Woow, ha sido un empate! 😵',
+                    'Clic para la siguiente partida',
+                    'success'
+                    )
+                    cantidadCuadrosRellenos = 0
+                }
+            resetCuadrados()
+        } */
+        }
+        if(ganadorPartida == "" && cantidadCuadrosRellenos == 9 || cantidadCuadrosRellenos == 10){
             Swal.fire(
-                'Woow, ha sido un empate! 😵',
-                'Clic para la siguiente partida',
+                'Tenemos un empate',
+                'Pulsa OK para continuar',
                 'success'
-                )
-                cantidadCuadrosRellenos = 0
-            }
-          resetCuadrados()
-    } */
+            ).then(x=>{
+
+                resetCuadrados()
+                
+                
+            })
+           
+        }
     }
 }
 
 
-/* ***************************************** */
-/* HACER EMPATE */
-/* REVISAR REPETIR PARTIDA O QUITARLA °°  FALTA QUE PREGINTE SI SOLO O CON ALGUIEN */ 
-/* COLOCAR OPCION DE 2 PLAYER EN MISMO PC O MODO SOLITARIO  // YA SE ARREGLO */
-/* RESPONSIVE 77 YA SE ARREGLO  */
-
-/* ***************************************** */
-
-
-
- 
 function ganaPartida(ganador){
+    ganadorPartida = ganador
     let sonido1 = new Audio()
     sonido1.src = 'audios/guitarra.mp3'
     sonido1.play()
@@ -386,6 +392,7 @@ function ganaPartida(ganador){
         'success'
       )
     resetCuadrados()
+   
 }
 function jugarComputer(objComparador,juegaText,x){
     let coordenadasBusquedaFinal 
@@ -400,16 +407,18 @@ function jugarComputer(objComparador,juegaText,x){
                     while(coordenadasBusqueda != ""){
                         let busqueda =  buscarEspaciosVaciosParaJugar(objComparador);
                         coordenadasBusqueda = busqueda[0]
-                        console.log(coordenadasBusqueda);
+                       /*  console.log(coordenadasBusqueda); */
                         if(coordenadasBusqueda == ""){
-                            console.log(busqueda);
+                            /* console.log(busqueda); */
                             coordenadasBusquedaFinal = busqueda
-                            console.log("se en mas de una comparacion");
+                           
                             break
                         }
                     }
                 }
+
                setTimeout(() => {
+                console.log("JUGO 0 CON 2MILISEGUNDOS");
                 objComparador[coordenadasBusquedaFinal[1]][coordenadasBusquedaFinal[2]] = "O"
                 //FILA 1
                 if(x.view.cCuadrados.childNodes[1].childNodes[1].id == coordenadasBusquedaFinal[2]){
